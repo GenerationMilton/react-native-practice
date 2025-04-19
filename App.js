@@ -29,10 +29,18 @@ const App = () => {
             marginTop: 5,
             marginLeft: 100,
             marginRight: 100,
-            marginBottom: 100,
             marginBottom: 50,
+             //more specific
             marginVertical: 50,
-            marginHorizontal: 50
+            marginHorizontal: 50,
+            padding: 10,
+            paddingTop: 100,
+            paddingLeft: 100,
+            paddingRight: 10,
+            paddingBottom: 100,
+            //more specific
+            paddingHorizontal: 50,
+            paddingVertical: 50,
           }}>
         <Text>Hello World2!</Text>
       </View>
