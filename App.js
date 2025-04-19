@@ -7,7 +7,18 @@ const App = () => {
 
   return (
     <SafeAreaView>
-      <MyText/>
+      <View style={{backgroundColor:'blue', height:50}}>
+        <Text>This is going to be our heade container</Text>
+      </View>
+      <View style={{backgroundColor: 'grey'}}>
+        <MyText/>
+        <MyText/>
+        <MyText/>
+      </View>
+      <View>
+        <Text>All rights reserved</Text>
+      </View>
+      
     </SafeAreaView>
   )
 
