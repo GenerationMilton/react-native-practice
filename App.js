@@ -1,10 +1,12 @@
 
-import React from 'react';
+import React, {useState} from 'react';
 import {SafeAreaView, Text, View}from 'react-native';
 import MyText from './components/MyText/MyText';
 import Item from './components/item/item';
 
 const App = () => {
+
+  const [originalText, setText]= useState('Hello, World!')
 
   return (
     <SafeAreaView>
@@ -22,7 +24,17 @@ const App = () => {
       <Item name={'table'} price={20}></Item>
       <Item name={'Chair'} price={100}></Item>
       <Item name={'Desk'} price={200}></Item>
+      <View>
+        <MyText></MyText>
+      </View>
+      <View>
+        <Text
+          onPress={()=>setText('Hello World, I learned how to change state!')}>
+          {originalText}
+        </Text>
+      </View>
     </SafeAreaView>
+    
   )
 
 }
