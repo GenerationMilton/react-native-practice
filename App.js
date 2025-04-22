@@ -3,6 +3,8 @@ import React, {useState, useEffect, useRef} from 'react';
 import {Button, SafeAreaView, ScrollView, Text, View}from 'react-native';
 import MyText from './components/MyText/MyText';
 import Item from './components/item/item';
+import { ThemeContext } from './contexts/ThemeContext';
+import HomeScreen from './components/HomeScreeen/HomeScreen';
 
 const App = () => {
 
@@ -18,13 +20,20 @@ const App = () => {
   },[])
 
   //useRef
-  let array = Array(500).fill(0);
+  let array = Array(10).fill(0);
   const scrollViewRef= useRef(null);
 
   const handleClick = () =>{
     scrollViewRef.current.scrollTo({x:0,Y:0,animated:true});
   }
 
+  //useContext
+    const [isDarkMode, setIsDarkMode] = useState(false);
+
+    const toggleTheme = () =>{
+      setIsDarkMode(!isDarkMode);
+    }
+ 
   return (
     <SafeAreaView>
       <View style={{backgroundColor:'blue', height:50}}>
@@ -65,6 +74,13 @@ const App = () => {
         </ScrollView>
         <Button onPress={handleClick} title={'Scroll To Top'}/>
       </View>
+      <ThemeContext.Provider value={isDarkMode}>
+        <View style={{backgroundColor: isDarkMode?'#222222':'#ffffff'}}>
+              <Text>Hello world!</Text>
+              <Button title={'Switch Mode'} onPress={toggleTheme}></Button>
+        </View>
+        <HomeScreen/>
+      </ThemeContext.Provider>
     </SafeAreaView>
     
   )
