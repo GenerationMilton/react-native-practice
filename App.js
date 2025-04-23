@@ -5,6 +5,7 @@ import MyText from './components/MyText/MyText';
 import Item from './components/item/item';
 import { ThemeContext } from './contexts/ThemeContext';
 import HomeScreen from './components/HomeScreeen/HomeScreen';
+import useToggle from './customHooks/useToggle';
 
 const App = () => {
 
@@ -33,6 +34,8 @@ const App = () => {
     const toggleTheme = () =>{
       setIsDarkMode(!isDarkMode);
     }
+  //custom Hooks
+  const[isOn, toggleIsOn] = useToggle(false);
  
   return (
     <SafeAreaView>
@@ -81,6 +84,10 @@ const App = () => {
         </View>
         <HomeScreen/>
       </ThemeContext.Provider>
+      <View>
+          <Text>{isOn? 'ON': 'OFF'}</Text>
+          <Button title={'Toggle'} onPress={toggleIsOn}/>
+      </View>
     </SafeAreaView>
     
   )
