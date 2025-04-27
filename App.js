@@ -1,6 +1,18 @@
 
 import React,{useState} from 'react';
-import {SafeAreaView, Image, TextInput, Text, TextComponent, ScrollView, TextInput,Pressable, Switch} from 'react-native';
+import {
+  SafeAreaView, 
+  Image, 
+  TextInput, 
+  Text, 
+  TextComponent, 
+  ScrollView, 
+  TextInput,
+  Pressable, 
+  Switch
+} from 'react-native';
+import {FontAwesomeIcon} from "@fortawesome/react-native-fontawesome";
+import {faCheck} from "@fortawesome/free-solid-svg-icons"
 
 const App = () => {
 
@@ -127,8 +139,17 @@ const App = () => {
         console.log(email, password, shouldKeepLoggedIn);
         }}
       ></Pressable>
-      <Text style={{color:'white', textAlign:'center', padding: 10}}>Submit</Text>
-
+      <View style={{
+        flex: 1,
+        flexDirection: 'row',
+        alignItems: 'center',
+        justifyContent: 'center',
+      }}>
+        <Text style={{color:'white', textAlign:'center', padding: 10}}>
+            Submit
+        </Text>
+        <FontAwesomeIcon icon={faCheck} style={{color:'white'}}/>
+      </View>
     </ScrollView>
   </SafeAreaView>
 
