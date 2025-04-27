@@ -1,6 +1,6 @@
 
 import React,{useState} from 'react';
-import {SafeAreaView, Image, TextInput, Text, TextComponent, ScrollView, TextInput,Pressable} from 'react-native';
+import {SafeAreaView, Image, TextInput, Text, TextComponent, ScrollView, TextInput,Pressable, Switch} from 'react-native';
 
 const App = () => {
 
@@ -16,6 +16,9 @@ const App = () => {
   //button component and input submission
   const [emailInput, setEmailInput]=useState('');
   const [password, setPassword] = useState('');
+
+  //Switch hook
+  const [shouldKeepLoggedIn, setShouldKeepLoggedIn] = useState(true);
 
   return<SafeAreaView>
       <Image 
@@ -106,6 +109,13 @@ const App = () => {
           setPassword(value);
         }}
       />
+      <View style={{flex:1, flexDirection:'row', alignItems: 'center'}}>
+        <Switch
+          value={shouldKeepLoggedIn}
+          onValueChange={value=> setShouldKeepLoggedIn(value)}
+        />
+        <Text>Keep me logged in</Text>
+      </View>
       <Pressable 
         style={[{
           backgroundColor:'green'},
@@ -114,7 +124,7 @@ const App = () => {
         disabled={email.length ===0 || password.length<8}
         onPress={()=>{
         concole.log('clicked')
-        console.log(email, password);
+        console.log(email, password, shouldKeepLoggedIn);
         }}
       ></Pressable>
       <Text style={{color:'white', textAlign:'center', padding: 10}}>Submit</Text>
