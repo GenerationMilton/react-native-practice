@@ -1,6 +1,6 @@
 
 import React,{useState} from 'react';
-import {SafeAreaView, Image, TextInput, Text, TextComponent, ScrollView} from 'react-native';
+import {SafeAreaView, Image, TextInput, Text, TextComponent, ScrollView, TextInput,Pressable} from 'react-native';
 
 const App = () => {
 
@@ -12,6 +12,10 @@ const App = () => {
   const[passwordValue, setpasswordValue]= useState('');
   //hook to manage input email
   const[email, setEmail]= useState('');
+
+  //button component and input submission
+  const [emailInput, setEmailInput]=useState('');
+  const [password, setPassword] = useState('');
 
   return<SafeAreaView>
       <Image 
@@ -82,6 +86,39 @@ const App = () => {
         source={require("./assets/images/cake.png")} 
         style={{height:500, width:500}}
       />
+    </ScrollView>
+    <ScrollView>
+      <TextInput 
+      value={emailInput}
+        keyboardType={'email-address'}
+        style={{borderWidth:1, borderRadius: 4, padding: 10}}
+        placeholder={'Please enter your email here'}
+        onChangeText={value=>{
+          setEmailInput(value);
+        }}
+      />
+      <TextInput 
+      value={password}
+        secureTextEntry={true}
+        style={{borderWidth:1, borderRadius: 4, padding: 10}}
+        placeholder={'Please enter your password here'}
+        onChangeText={valuer=>{
+          setPassword(value);
+        }}
+      />
+      <Pressable 
+        style={[{
+          backgroundColor:'green'},
+         (email.length ===0 || password.length<8 &&{opacity:0.5}),
+        ]}
+        disabled={email.length ===0 || password.length<8}
+        onPress={()=>{
+        concole.log('clicked')
+        console.log(email, password);
+        }}
+      ></Pressable>
+      <Text style={{color:'white', textAlign:'center', padding: 10}}>Submit</Text>
+
     </ScrollView>
   </SafeAreaView>
 
